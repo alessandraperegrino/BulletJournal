@@ -77,13 +77,13 @@ class NewUser extends Component {
       <section>
         <Label 
           htmlFor="name" 
-          text="Quem é você?" 
+          text="Nome:" 
           invalidValue={this.state.validation.invalidName}
         />
         <Input 
           id="name" 
           placeholder="Digite seu nome" 
-          maxLength="40" 
+          maxLength="50" 
           readOnly={this.state.completedFirstView}
           invalidValue={this.state.validation.invalidName}
           defaultValue={this.state.user.name}
