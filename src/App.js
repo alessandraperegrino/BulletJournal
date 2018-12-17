@@ -5,7 +5,6 @@ import './App.css';
 import Header from './components/Header';
 import NewUser from './components/NewUser';
 import Toast from './components/Toast';
-
 import User from './models/User';
 
 class App extends Component {
@@ -65,6 +64,8 @@ class App extends Component {
       </div>
     );
   }
+
+  
 }
 
 export default App;

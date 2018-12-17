@@ -4,7 +4,6 @@ import Label from '../Label';
 import Input from '../Input';
 import Button from '../Button';
 import Toast from '../Toast';
-import ImageScroller from '../ImageScroller';
 
 import User from '../../models/User';
 
