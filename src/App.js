@@ -21,8 +21,7 @@ class App extends Component {
   }
 
   messageToNewUser(user) {
-    let gender = user.gender === 'm' ? 'o': 'a';
-    this.refs.toast.success(`Seja bem vind${gender} ${user.name}!`);
+    this.refs.toast.success(`Seja bem vindo, ${user.name}!`);
   }
 
   renderNewUser() {
@@ -35,7 +34,7 @@ class App extends Component {
 
       return (
         <div style={style}>
-          <b>Usuário obtido do <i>localStorage</i></b><br />
+          <b>Bullet Journal</b><br />
           {user.toString()}
         </div>
       );

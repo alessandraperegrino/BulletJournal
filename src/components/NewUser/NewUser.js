@@ -7,7 +7,6 @@ import Toast from '../Toast';
 import ImageScroller from '../ImageScroller';
 
 import User from '../../models/User';
-import Avatar from '../../models/Avatar';
 
 class NewUser extends Component {
   constructor(props) {
@@ -87,7 +86,6 @@ class NewUser extends Component {
             onClick={event => {
               event.preventDefault();
               let user = this.state.user;
-              user.avatar = Avatar.getAll()[0];
               this.setState({
                 user: user,
                 completedFirstView: false
@@ -114,35 +112,11 @@ class NewUser extends Component {
     }
   }
 
-  renderAvatar() {
-    if (this.state.completedFirstView) {
-      return (
-        <section>
-          <Label text="Escolha seu avatar:" />
-          <ImageScroller 
-            file="img/avatars.png"
-            images={Avatar.getAll()}
-            selectedImage={this.state.user.avatar}
-            onChange={avatar => {
-              let user = this.state.user;
-              user.avatar = avatar;
-              this.setState({user: user});
-            }}
-          />
-        </section>
-      );
-
-    } else {
-      return null;
-    }
-  }
-
   render() {
     return (
       <div className="center">
         <form className="pure-form pure-form-stacked">
           {this.renderName()}
-          {this.renderAvatar()}
           {this.renderButtons()}
         </form>
       </div>
