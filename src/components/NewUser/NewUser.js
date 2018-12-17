@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 
 import Label from '../Label';
 import Input from '../Input';
-import GenderSelector from '../GenderSelector';
 import Button from '../Button';
 import Toast from '../Toast';
 import ImageScroller from '../ImageScroller';
@@ -17,7 +16,6 @@ class NewUser extends Component {
       user: new User(),
       validation: {
         invalidName: false,
-        invalidGender: false,
       },
       completedFirstView: false,
     };
@@ -31,15 +29,7 @@ class NewUser extends Component {
     });
   }
 
-  updateUserGender = (event, gender) => {
-    event.preventDefault();
-    let user = this.state.user;
-    user.gender = gender;
-    user.avatar = Avatar.getAll()[0];
-    this.setState({
-      user: user
-    });
-  }
+  
 
   valid = (e) => {
     e.preventDefault();
@@ -47,17 +37,12 @@ class NewUser extends Component {
     let validation = this.state.validation;
 
     validation.invalidName = ! user.validName();
-    validation.invalidGender = ! user.validGender();
 
     let message = '';
     let completedFirstView = false;
 
-    if (validation.invalidName && validation.invalidGender) {
-      message = 'Por favor, informe seu nome e gênero!!!';
-    } else if (validation.invalidName) {
+    if (validation.invalidName) {
       message = 'Por favor, informe seu nome!!!';
-    } else if (validation.invalidGender) {
-      message = 'Por favor, selecione seu gênero!!!';
     } else {
       completedFirstView = true;
     }
@@ -91,26 +76,6 @@ class NewUser extends Component {
         />
       </section>
     );
-  }
-
-  renderGender() {
-    if (this.state.completedFirstView) {
-      return null;
-    } else {
-      return (
-        <section>
-          <Label
-            text="Seu gênero:"
-            invalidValue={this.state.validation.invalidGender}
-          />
-          <GenderSelector
-            invalidValue={this.state.validation.invalidGender}
-            gender={this.state.user.gender}
-            updateGender={this.updateUserGender}
-          />
-        </section>
-      );
-    }
   }
 
   renderButtons() {
@@ -156,7 +121,6 @@ class NewUser extends Component {
           <Label text="Escolha seu avatar:" />
           <ImageScroller 
             file="img/avatars.png"
-            y={(this.state.user.gender === "m" ? 0 : 1)}
             images={Avatar.getAll()}
             selectedImage={this.state.user.avatar}
             onChange={avatar => {
@@ -178,7 +142,6 @@ class NewUser extends Component {
       <div className="center">
         <form className="pure-form pure-form-stacked">
           {this.renderName()}
-          {this.renderGender()}
           {this.renderAvatar()}
           {this.renderButtons()}
         </form>
