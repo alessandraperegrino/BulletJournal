@@ -7,8 +7,6 @@ const repository = new Repository();
 class User {
   constructor() {
     this.name = '';
-    this.gender = '';
-    this.avatar = Avatar.getAll()[0];
   }
 
   validName = () => {
@@ -34,11 +32,6 @@ class User {
       json => {
         let user = new User();
         user.name = json.name;
-        user.gender = json.gender;
-        user.avatar = new Avatar(
-          json.avatar.index,
-          json.avatar.description
-        );
         success(user);
       },
       fail
@@ -46,7 +39,7 @@ class User {
   }
 
   toString() {
-    return `${this.name}, ${this.avatar.toString()}`;
+    return `${this.name}`;
   }
 }
 
