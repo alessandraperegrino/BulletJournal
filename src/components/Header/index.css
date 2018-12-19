@@ -10,8 +10,8 @@ div.header {
   
   div.header img.logo {
     float: left;
-    height: 92px;
-    width: 164px;
+    height:100px;
+    width: 100px;
   }
   
   div.header h4.label {
