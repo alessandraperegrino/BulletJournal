@@ -6,7 +6,6 @@ import Header from './components/Header';
 import NewUser from './components/NewUser';
 import Toast from './components/Toast';
 import User from './models/User';
-import TextBox from './components/TextBox';
 
 class App extends Component {
   constructor(props) {
@@ -63,7 +62,6 @@ class App extends Component {
         <Header />
         { this.renderNewUser() }
         <Toast ref="toast" />
-        <TextBox />
 
       </div>
     );
